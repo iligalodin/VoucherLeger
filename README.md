@@ -11,3 +11,7 @@ The source cards in `G.vouchers.cards` are never modified. Their keys determine 
 ## Install
 
 Requires Steamodded and Lovely. Place this folder in Balatro's `Mods` directory and restart Balatro.
+
+## Thunderstore release
+
+Run `scripts/build-thunderstore.sh` to produce `dist/VoucherLedger-<CalVer>.zip`, then run `scripts/verify-thunderstore.sh` before uploading. The archive has Thunderstore's required root-level metadata and only the files installed for this mod.

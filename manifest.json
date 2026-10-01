@@ -1,0 +1,10 @@
+{
+  "name": "VoucherLedger",
+  "version_number": "2026.10.1",
+  "website_url": "",
+  "description": "Displays this run's redeemed vouchers beside Balatro's score display.",
+  "dependencies": [
+    "Steamodded-Steamodded-26.829.0",
+    "Thunderstore-lovely-0.10.0"
+  ]
+}

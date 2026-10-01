@@ -7,7 +7,7 @@
   "prefix": "voucher_ledger",
   "main_file": "VoucherLedger.lua",
   "priority": 0,
-  "version": "0.1.0",
+  "version": "2026.10.1",
   "dependencies": [
     "Lovely (>=0.9)",
     "Steamodded (>=1.0.0~BETA-1731b)"
