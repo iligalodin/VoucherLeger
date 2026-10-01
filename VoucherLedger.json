@@ -1,0 +1,15 @@
+{
+  "id": "VoucherLedger",
+  "name": "Voucher Ledger",
+  "display_name": "Voucher Ledger",
+  "author": ["@_Odinh"],
+  "description": "Shows vouchers redeemed this run beside the score display in shops and blinds.",
+  "prefix": "voucher_ledger",
+  "main_file": "VoucherLedger.lua",
+  "priority": 0,
+  "version": "0.1.0",
+  "dependencies": [
+    "Lovely (>=0.9)",
+    "Steamodded (>=1.0.0~BETA-1731b)"
+  ]
+}

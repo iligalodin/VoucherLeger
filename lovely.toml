@@ -1,0 +1,16 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "G.GAME.used_vouchers[self.config.center_key] = true"
+position = "after"
+match_indent = true
+payload = '''
+if _G.VoucherLedger and _G.VoucherLedger.record then
+    _G.VoucherLedger.record(self)
+end
+'''
