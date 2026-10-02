@@ -1,17 +1,31 @@
 # Voucher Ledger
 
-Voucher Ledger keeps a visual record of every voucher redeemed during the current run.
+Keep your redeemed vouchers visible throughout the run.
 
-## Use
+Voucher Ledger places a compact vertical strip of your redeemed vouchers beside the score display during shops and blinds. It is a visual aid only: voucher effects, costs, and normal Balatro behaviour stay unchanged.
 
-Voucher Ledger mirrors Balatro's existing **Bought Vouchers** presentation: it makes front-facing copies of the redeemed voucher cards, merges every copy into one native `CardArea`, and places those copies as one locked vertical column. Each card is rotated 90° clockwise; no automatic voucher-layout groups or dragging remain. The column is capped at the game screen height, so additional vouchers compress into the same strip. A hovered voucher alone moves 0.75 units toward the screen centre, then returns to the column when hover ends. Hover information always opens at the rotated card's upper edge: the screen-right side of the voucher. The copies retain the card's normal artwork, atlas, materialize effect, glint, hover focus, and voucher description. The strip is visible in the shop, while choosing a hand, and during score calculation.
+## Features
 
-The source cards in `G.vouchers.cards` are never modified. Their keys determine which cards are copied, so custom voucher chains retain their own artwork and avoid unrelated `used_vouchers` flags.
+- See every voucher you have redeemed in the current run.
+- Hover a voucher to read its normal description.
+- Works with vouchers added by compatible mods.
+- Automatically hides when the run has no redeemed vouchers.
+- No settings or setup required after installation.
 
 ## Install
 
-Requires Steamodded and Lovely. Place this folder in Balatro's `Mods` directory and restart Balatro.
+Voucher Ledger requires [Steamodded](https://github.com/Steamodded/smods) and Lovely.
 
-## Thunderstore release
+1. Download or clone this repository.
+2. Put the `VoucherLedger` folder directly in Balatro's `Mods` folder.
+3. Restart Balatro.
 
-Run `scripts/build-thunderstore.sh` to produce `dist/VoucherLedger-<CalVer>.zip`, then run `scripts/verify-thunderstore.sh` before uploading. The archive has Thunderstore's required root-level metadata and only the files installed for this mod.
+The folder must contain `VoucherLedger.json` and `VoucherLedger.lua`; do not place an extra parent folder between `Mods` and `VoucherLedger`.
+
+## Use
+
+Start or continue a run and redeem vouchers normally. The ledger updates automatically. Hover any voucher in the strip to inspect it.
+
+## Compatibility
+
+Voucher Ledger reads the vouchers already redeemed by the run. It does not edit, replace, or remove your voucher cards.
