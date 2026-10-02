@@ -2,10 +2,11 @@
   "id": "VoucherLedger",
   "name": "Voucher Ledger",
   "display_name": "Voucher Ledger",
-  "author": ["@_Odinh"],
+  "author": ["@_Odinh", "Simple_dev"],
   "description": "Shows vouchers redeemed this run beside the score display in shops and blinds.",
   "prefix": "voucher_ledger",
   "main_file": "VoucherLedger.lua",
+  "icon_path": "icon.png",
   "priority": 0,
   "version": "2026.10.1",
   "dependencies": [

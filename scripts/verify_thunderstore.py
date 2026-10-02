@@ -17,6 +17,8 @@ EXPECTED_FILES = (
     "icon.png",
     "lovely.toml",
     "manifest.json",
+    "assets/1x/icon.png",
+    "assets/2x/icon.png",
 )
 REQUIRED_MANIFEST_FIELDS = {"name", "version_number", "website_url", "description", "dependencies"}
 
@@ -44,10 +46,16 @@ def main(project_dir: Path, supplied_archive: str | None) -> None:
             raise ValueError("manifest.json has the wrong package name")
         if packaged_manifest["version_number"] != packaged_mod["version"]:
             raise ValueError("manifest and mod versions differ")
+        if packaged_mod.get("icon_path") != "icon.png":
+            raise ValueError("VoucherLedger.json must reference the packaged icon.png")
         if len(packaged_manifest["description"]) > 250:
             raise ValueError("manifest description exceeds 250 characters")
         if png_dimensions(package.read("icon.png")) != (256, 256):
             raise ValueError("icon.png must be 256x256")
+        if png_dimensions(package.read("assets/1x/icon.png")) != (68, 68):
+            raise ValueError("assets/1x/icon.png must be 68x68")
+        if png_dimensions(package.read("assets/2x/icon.png")) != (136, 136):
+            raise ValueError("assets/2x/icon.png must be 136x136")
 
     print(f"Validated {archive}")
 
