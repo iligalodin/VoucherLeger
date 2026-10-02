@@ -1,6 +1,6 @@
 {
   "name": "VoucherLedger",
-  "version_number": "2026.10.1",
+  "version_number": "26.10.2",
   "website_url": "",
   "description": "Displays this run's redeemed vouchers beside Balatro's score display.",
   "dependencies": [
