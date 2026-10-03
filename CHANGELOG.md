@@ -1,5 +1,11 @@
 # Changelog
 
+## 26.10.3
+
+ - Changed the mod icon
+ - included more scenes where the vouchers are visible
+ - gave the vouchers a small rotational offset on hover
+
 ## 26.10.2
 
  - Changed readme to be more user forward

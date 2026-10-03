@@ -58,9 +58,14 @@ end
 
 local function can_show_hud()
     return G and G.HUD and G.GAME and G.STATES and (
-        G.STATE == G.STATES.SHOP
+           G.STATE == G.STATES.SHOP
         or G.STATE == G.STATES.SELECTING_HAND
         or G.STATE == G.STATES.HAND_PLAYED
+        or G.STATE == G.STATES.BLIND_SELECT
+        or G.STATE == G.STATES.BUFFOON_PACK
+        or G.STATE == G.STATES.STANDARD_PACK
+        or G.STATE == G.STATES.SMODS_BOOSTER_OPENED
+        or G.STATE == G.STATES.SMODS_REDEEM_VOUCHER
     )
 end
 
@@ -143,13 +148,19 @@ local function lock_voucher_row()
         card.states.drag.can = false
         card.states.drag.is = false
         local target_x = card.voucher_ledger_x
+        local target_y = card.voucher_ledger_y
         if card.states.hover.is then
             target_x = target_x + HOVERED_VOUCHER_X_OFFSET
+
         end
         if card.T.x ~= target_x or card.T.y ~= card.voucher_ledger_y
-            or card.T.r ~= math.pi / 2 then
+        or card.T.r ~= math.pi / 2 then
             card.T.r = math.pi / 2
-            card:hard_set_T(target_x, card.voucher_ledger_y,
+            if card.states.hover.is then
+                card.T.r = math.pi / 2.1
+                target_y = target_y - 0.25
+            end
+            card:hard_set_T(target_x, target_y,
                 G.CARD_W, G.CARD_H)
         end
     end
