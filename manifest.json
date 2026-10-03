@@ -4,7 +4,6 @@
   "website_url": "",
   "description": "Displays this run's redeemed vouchers beside Balatro's score display.",
   "dependencies": [
-    "Steamodded-Steamodded",
     "Thunderstore-lovely-0.10.0"
   ]
 }
