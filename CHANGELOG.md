@@ -1,5 +1,9 @@
 # Changelog
+## 26.10.4
 
+ - added G.STATES.NEW_ROUND
+
+ 
 ## 26.10.3
 
  - Changed the mod icon

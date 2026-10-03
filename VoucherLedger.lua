@@ -69,6 +69,7 @@ local function can_show_hud()
         or G.STATE == G.STATES.ROUND_EVAL
         or G.STATE == G.STATES.SMODS_BOOSTER_OPENED
         or G.STATE == G.STATES.SMODS_REDEEM_VOUCHER
+        or G.STATE == G.STATES.NEW_ROUND
     )
 end
 
