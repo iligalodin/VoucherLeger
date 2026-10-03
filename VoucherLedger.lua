@@ -89,11 +89,13 @@ local function voucher_row(history)
     )
     local silent = true
 
-    for _, source in ipairs(sources) do
+    for index, source in ipairs(sources) do
         local key = voucher_key(source)
         local center = key and G.P_CENTERS[key]
         if center and center.set == 'Voucher' then
             local card = copy_card(source)
+            card.voucher_ledger_order = index
+            card.ability.order = index
             if card.ability and source.ability and source.ability.extra then
                 card.ability.extra = copy_table(source.ability.extra)
             end
@@ -141,18 +143,29 @@ local function arrange_voucher_row()
 end
 
 local function lock_voucher_row()
+
     local row = ledger.voucher_row
     if not row then return end
-
+    local reorder = false
     for _, card in ipairs(row.cards) do
         card.states.drag.can = false
         card.states.drag.is = false
+
+        local draw_order = card.voucher_ledger_order
+
+
         local target_x = card.voucher_ledger_x
         local target_y = card.voucher_ledger_y
         if card.states.hover.is then
+            draw_order = draw_order +  #row.cards
             target_x = target_x + HOVERED_VOUCHER_X_OFFSET
-
         end
+
+        if card.ability.order ~= draw_order then
+            card.ability.order = draw_order
+            reorder = true
+        end
+
         if card.T.x ~= target_x or card.T.y ~= card.voucher_ledger_y
         or card.T.r ~= math.pi / 2 then
             card.T.r = math.pi / 2
@@ -163,6 +176,12 @@ local function lock_voucher_row()
             card:hard_set_T(target_x, target_y,
                 G.CARD_W, G.CARD_H)
         end
+    end
+
+    if reorder then table.sort(row.cards, 
+        function(a,b)
+            return a.ability.order < b.ability.order
+        end)
     end
 end
 
