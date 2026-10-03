@@ -60,10 +60,13 @@ local function can_show_hud()
     return G and G.HUD and G.GAME and G.STATES and (
            G.STATE == G.STATES.SHOP
         or G.STATE == G.STATES.SELECTING_HAND
+        or G.STATE == G.STATES.DRAW_TO_HAND
         or G.STATE == G.STATES.HAND_PLAYED
+        or G.STATE == G.STATES.PLAY_TAROT
         or G.STATE == G.STATES.BLIND_SELECT
         or G.STATE == G.STATES.BUFFOON_PACK
         or G.STATE == G.STATES.STANDARD_PACK
+        or G.STATE == G.STATES.ROUND_EVAL
         or G.STATE == G.STATES.SMODS_BOOSTER_OPENED
         or G.STATE == G.STATES.SMODS_REDEEM_VOUCHER
     )
