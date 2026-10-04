@@ -1,4 +1,11 @@
 # Changelog
+
+## 26.10.5
+
+ - Added game setting to show/hide voucher ledger
+ - Fixed visibility of vouchers that are spawned though decks and challenges 
+
+
 ## 26.10.4
 
  - added G.STATES.NEW_ROUND

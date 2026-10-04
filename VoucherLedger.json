@@ -8,7 +8,7 @@
   "main_file": "VoucherLedger.lua",
   "icon_path": "icon.png",
   "priority": 0,
-  "version": "26.10.4",
+  "version": "26.10.5",
   "dependencies": [
     "Lovely (>=0.9)",
     "Steamodded"
