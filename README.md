@@ -9,8 +9,9 @@ Voucher Ledger places a compact vertical strip of your redeemed vouchers beside 
 - See every voucher you have redeemed in the current run.
 - Hover a voucher to read its normal description.
 - Works with vouchers added by compatible mods.
+- Deck- and challenge-provided vouchers show their artwork without marking their Collection entry discovered.
 - Automatically hides when the run has no redeemed vouchers.
-- No settings or setup required after installation.
+- Toggle the Ledger via **Options → Settings → Game → Show bought vouchers**.
 
 ## Install
 

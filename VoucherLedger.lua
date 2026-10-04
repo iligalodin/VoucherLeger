@@ -5,8 +5,29 @@ local HUD_OFFSET_Y = 0
 
 local ledger = {
     hud_dirty = true,
+    config = SMODS.current_mod.config,
 }
 _G.VoucherLedger = ledger
+
+local function refresh_voucher_ledger()
+    ledger.hud_dirty = true
+    SMODS.save_mod_config(SMODS.current_mod)
+end
+
+local settings_tab = G.UIDEF.settings_tab
+function G.UIDEF.settings_tab(tab, ...)
+    local definition = settings_tab(tab, ...)
+    if tab == 'Game' then
+        table.insert(definition.nodes, create_toggle({
+            label = 'Show bought vouchers',
+            w = 5,
+            ref_table = ledger.config,
+            ref_value = 'show_bought_vouchers',
+            callback = refresh_voucher_ledger,
+        }))
+    end
+    return definition
+end
 
 local function voucher_key(card)
     return card and card.config and card.config.center_key
@@ -97,7 +118,20 @@ local function voucher_row(history)
         local key = voucher_key(source)
         local center = key and G.P_CENTERS[key]
         if center and center.set == 'Voucher' then
-            local card = copy_card(source)
+            local card = Card(
+                source.T.x,
+                source.T.y,
+                G.CARD_W,
+                G.CARD_H,
+                G.P_CARDS.empty,
+                G.P_CENTERS.c_base,
+                {
+                    bypass_back = G.GAME.selected_back.pos,
+                    bypass_discovery_center = true,
+                    bypass_discovery_ui = true,
+                }
+            )
+            card = copy_card(source, card)
             card.voucher_ledger_order = index
             card.ability.order = index
             if card.ability and source.ability and source.ability.extra then
@@ -207,7 +241,7 @@ end
 function ledger.update_hud()
     local history = voucher_history()
     local hud = ledger.hud
-    if not can_show_hud() or #history == 0 then
+    if not ledger.config.show_bought_vouchers or not can_show_hud() or #history == 0 then
         if hud then hud:remove() end
         remove_voucher_row()
         ledger.hud, ledger.hud_anchor, ledger.hud_signature = nil, nil, nil
